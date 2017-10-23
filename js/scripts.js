@@ -1,29 +1,16 @@
 $(function(){
   $('#grocery').submit(function(event){
+    $("#grocery").hide();
+    var ids = ['item1','item2','item3'];
 
-    var groceries = ['item1','item2','item3'];
-
-    groceries.forEach(function(item) {
-      var userInput = $("input#" + item).val();
-      $(".results").append("<li>" + userInput + "</li>");
+    var groceries = ids.map(function(item) {
+      return $("input#" + item).val().toUpperCase();
+    });
+    var groceries = groceries.sort();
+    groceries.forEach(function(item){
+      $(".results").append("<li>" + item + "</li>");
     });
     event.preventDefault();
   });
 
 });
-
-    /*var sorted = userInput.sort().toUpperCase();
-    userInput.forEach(function(item){
-      $('.results').append("<li>" + item + "</li>");
-    });
-    $('#grocery').hide();
-    event.preventDefault();
-  });
-});
-
-  /*var flavors = ["smores", "americone dream", "vanilla", "rocky road"]
-  flavors.forEach(function(flavor){
-    $(".results").append("<li>" + flavor + "</li>");
-  });
-});
-*/
